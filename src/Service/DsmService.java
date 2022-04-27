@@ -64,7 +64,7 @@ public class DsmService {
 			}
 			// 마지막 남은 좌표들 한번에 저장
 			dsmRepository.saveDsm(arr);
-			
+			arr.clear(); // clear 해줘야지 추후 여러개의 dsm 파일 저장 시 오류 없이 가능
 			file_reader.close();
 			
 		} catch (FileNotFoundException e) {
