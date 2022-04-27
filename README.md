@@ -21,6 +21,7 @@ DSM 파일을 DB에 저장하는 코드
 
 ## 4️⃣ Main 실행
 
+- 실행 전, DsmRepository Class의 password를 자신의 postgreSql 비밀번호로 변경한다. (기타 postgreSql 설정이 기본과 다르다면 수정해주기)
 - 실행 시 Files 폴더에 있는 모든 DSM 파일을 읽는다.
 - DSM 파일을 하나 씩 읽으면서 100만 단위로 분할해서 DB connection을 열고 저장한다 (HEAP OverFlow 방지)
 - DSM 파일 하나(약 500MB)를 DB에 넣을 때 까지 총 316543ms (= 316s = 5m) 걸린다.
