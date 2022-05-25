@@ -32,12 +32,9 @@ public class DsmRepository {
 		long totalBatchCount = 0;
 		try (PreparedStatement ps = connect.prepareStatement(sql)) {
 			for (Dsm dsm : dsmList) {
-				long startTime = System.currentTimeMillis();
 				System.out.printf("save %s ... ", dsm.getDsmName());
 				totalBatchCount += readDsm(ps, dsm);
 				dsm.close();
-				long endTime = System.currentTimeMillis();
-				System.out.println(String.format("코드 실행 시간: %20dms", endTime - startTime));
 			}
 		} catch (SQLException | IOException e) {
 			// DSM 파일의 하나라도 오류가 나면 해당 파일 전체 작업 rollback.
@@ -54,9 +51,9 @@ public class DsmRepository {
 		String line;
 		while ((line = reader.readLine()) != null) {
 			String[] s = line.split(" ");
-			ps.setDouble(1, Double.parseDouble(s[0]));
-			ps.setDouble(2, Double.parseDouble(s[1]));
-			ps.setDouble(3, Double.parseDouble(s[2]));
+			ps.setString(1, s[0]);
+			ps.setString(2, s[1]);
+			ps.setString(3, s[2]);
 			ps.addBatch();
 			ps.clearParameters();
 			if(--batchCount == 0) {

@@ -6,8 +6,8 @@ import java.sql.SQLException;
 
 public class JdbcTemplate {
 
-    private final String url = "jdbc:postgresql://localhost:5432/geor";
-    private final String user = "postgres";
+    private final String url = "jdbc:postgresql://localhost:5432/GeoOr";
+    private final String    user = "postgres";
     private final String password = "1"; //password 입력
 
     public Connection getConnection() throws SQLException {
